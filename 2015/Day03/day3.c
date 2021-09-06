@@ -12,7 +12,17 @@ typedef struct {
   int x,y;
 } coords;
 
+int getNumberOfVisitedHouses(int roboSantaActivated);
+
 int main() {
+
+  printf("Part 1 solution: %d\n", getNumberOfVisitedHouses(0));
+  printf("Part 2 solution: %d\n", getNumberOfVisitedHouses(1));
+
+  return 0;
+}
+
+int getNumberOfVisitedHouses(int roboSantaActivated) {
   char c;
 
   int i,select,k,last;
@@ -34,7 +44,7 @@ int main() {
   fp = fopen("day3.dat","r");
   i = 0;
   while((c = fgetc(fp)) != EOF) {
-    select = i % 2;
+    select = i % (1 + roboSantaActivated);
     i++;
     if(c == 'N')
       santa[select].y++;
@@ -62,7 +72,5 @@ int main() {
   }
   fclose(fp);
 
-  printf("Total houses with presents: %d\n",last+1);
-
-  return 0;
+  return last + 1;
 }

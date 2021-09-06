@@ -15,20 +15,22 @@ int main() {
   char str[17];
   char *cp;
 
-  int i,j,count;
+  int i,j,countPart1, countPart2;
 
   FILE *fp;
 
   fp = fopen("day5.dat","r");
-  count = 0;
+  countPart1 = 0;
+  countPart2 = 0;
   for(i = 0; i < NMAX; i++) {
     fscanf(fp,"%s",str);
-//    printf("%s %d %d\n",str,rule4(str),rule5(str));
-//    if(rule1(str) && rule2(str) && rule3(str))
+    if(rule1(str) && rule2(str) && rule3(str))
+      countPart1++;
     if(rule4(str) && rule5(str))
-      count++;
+      countPart2++;
   }
-  printf("Total nice: %d\n",count);
+  printf("Part 1 solution: %d\n", countPart1);
+  printf("Part 2 solution: %d\n", countPart2);
 
   return 0;
 }
