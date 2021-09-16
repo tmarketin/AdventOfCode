@@ -15,7 +15,7 @@ void toggle(char *, int, int, int, int);
 int main() {
   char *field;
 
-  int i,c;
+  int i,countPart1, countPart2;
   int funk,x1,y1,x2,y2;
 
   FILE *fp;
@@ -35,11 +35,16 @@ int main() {
       turnoff(field,x1,y1,x2,y2);
   }
 
-  c = 0;
-  for(i = 0; i < NMAX2; i++)
-    c = c + *(field + i);
+  countPart1 = 0;
+  countPart2 = 0;
+  for(i = 0; i < NMAX2; i++) {
+    if(*(field+ i) != 0)
+      countPart1++;
+    countPart2 = countPart2 + *(field + i);
+  }
 
-  printf("Total: %d\n",c);
+  printf("Part 1 solution: %d\n",countPart1);
+  printf("Part 2 solution: %d\n",countPart2);
 
   return 0;
 }
